@@ -1,3 +1,5 @@
+package root;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -5,10 +7,12 @@ public class UserInterface {
     public JFrame window;
     public Container con;
     public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel;
-    public JButton leftButton, middleButton, rightButton;
+    public JButton leftButton, middleButton, rightButton, testButton;
     int windowX = 1400;
     int windowY = 800;
-    int marginX, marginY, innerMargin, stickPanelWidth, stickPanelHeight;
+    public int marginX, marginY, innerMargin, stickPanelWidth, stickPanelHeight;
+
+    Main main;
 
     public Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
 
@@ -70,11 +74,23 @@ public class UserInterface {
         rightButton.setForeground(Color.black);
         rightButton.setFont(normalFont);
         buttonPanel.add(rightButton);
-        
+
+        testButton = new JButton("TEST");
+        testButton.setBounds(150 + 800, windowY - 50 * 4, 400, 50);
+        testButton.setBackground(Color.magenta);
+        testButton.setForeground(Color.black);
+        testButton.setFont(normalFont);
+        con.add(testButton);
 
         con.add(buttonPanel);
         con.add(leftStickPanel);
         con.add(middleStickPanel);
         con.add(rightStickPanel);
+
+        int[] columnsMiddle = {marginX + stickPanelWidth / 2,
+                marginX + innerMargin + stickPanelWidth + stickPanelWidth / 2,
+                marginX + (innerMargin + stickPanelWidth ) * 2 + stickPanelWidth / 2};
+
+        testButton.setBounds(columnsMiddle[1] - 400 / 2, windowY - 200, 400, 50);
+        }
     }
-}
