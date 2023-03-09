@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class Board {
     String[][] index;
-    int[] addressX = {1150, 700, 250};
-    int[] addressY = new int[12];
+    public int[] addressX = {1150, 700, 250};
+    public int[] addressY = new int[12];
     HashMap<String, Integer> dictX;
     HashMap<String, Integer> dictY;
 

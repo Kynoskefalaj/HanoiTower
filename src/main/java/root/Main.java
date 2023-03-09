@@ -12,7 +12,7 @@ public class Main {
 
     public UserInterface ui = new UserInterface();
     public Mechanics mechanics = new Mechanics(this, ui);
-    public Spawn spawn = new Spawn(mechanics);
+    public Spawn spawn = new Spawn(mechanics, ui);
     public Board board = new Board();
 
     public static void main(String[] args) {
