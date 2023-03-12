@@ -1,19 +1,18 @@
 package rings;
-
 import root.Mechanics;
 import javax.swing.*;
 import java.awt.*;
 import root.Board;
 
-public class Ring_400 extends Ring {
+public class Ring_350 extends Ring {
 
-    public Ring_400(Mechanics mechanics, Board board){
+    public Ring_350(Mechanics mechanics, Board board) {
         this.mechanics = mechanics;
         this.board = board;
-        diameter = 400;
-        color = Color.green;
+        diameter = 350;
+        color = Color.red;
         startPositionX = board.addressX[2];
-        startPositionY = board.addressY[0];
+        startPositionY = board.addressY[1];
 
         positionX = startPositionX;
         positionY = startPositionY;

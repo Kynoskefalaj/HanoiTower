@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Board {
     String[][] index;
-    public int[] addressX = {1150, 700, 250};
+    public int[] addressX = {250, 700, 1150};
     public int[] addressY = new int[12];
     HashMap<String, Integer> dictX;
     HashMap<String, Integer> dictY;
@@ -27,8 +27,8 @@ public class Board {
 
         // gives values to particular levels from
         // level 0 - 625 to 11 - 75
+        int y = 625;
         for (int i = 0; i < 12; i++){
-            int y = 625;
             addressY[i] = y;
             y -= 50;
         }
