@@ -82,6 +82,17 @@ public class UserInterface {
         testButton.setFont(normalFont);
         con.add(testButton);
 
+//        JButton test2Button = new JButton("400");
+//        test2Button.setBackground(Color.cyan);
+//        test2Button.setName("400");
+//        test2Button.setForeground(Color.black);
+//        test2Button.setFont(normalFont);
+//        test2Button.addActionListener(main.handler);
+//        test2Button.setActionCommand("400");
+//        test2Button.setVisible(true);
+//        con.add(test2Button);
+
+
         con.add(buttonPanel);
         con.add(leftStickPanel);
         con.add(middleStickPanel);

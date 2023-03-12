@@ -8,6 +8,8 @@ import root.Board;
 public class Ring_400 extends Ring {
 
     public Ring_400(Mechanics mechanics, Board board){
+        this.mechanics = mechanics;
+        this.board = board;
         diameter = 400;
         color = Color.green;
         startPositionX = board.addressX[2];
@@ -16,12 +18,9 @@ public class Ring_400 extends Ring {
         positionX = startPositionX;
         positionY = startPositionY;
 
-        ringButton = new JButton();
-        ringButton = mechanics.makeButton(ringButton, "" + diameter, color,
+        ringButton = new JButton("" + diameter);
+        ringButton = mechanics.makeButton(this, ringButton, "" + diameter, color,
                 "" + diameter);
-
-
-
     }
 
 

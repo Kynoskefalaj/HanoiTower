@@ -10,13 +10,20 @@ public class Main {
     Ring chosenRing;
     UniversalHandler handler = new UniversalHandler();
 
-    public UserInterface ui = new UserInterface();
-    public Mechanics mechanics = new Mechanics(this, ui);
-    public Spawn spawn = new Spawn(mechanics, ui);
-    public Board board = new Board();
+    public UserInterface ui;
+    public Mechanics mechanics;
+    public Spawn spawn;
+    public Board board;
 
     public static void main(String[] args) {
         new Main();
+    }
+
+    public Main(){
+        this.ui = new UserInterface();
+        this.mechanics = new Mechanics(this, ui);
+        this.spawn = new Spawn(mechanics, ui);
+        this.board = new Board();
     }
 
     public class UniversalHandler implements ActionListener {
