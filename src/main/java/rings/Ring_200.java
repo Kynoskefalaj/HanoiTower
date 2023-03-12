@@ -11,10 +11,15 @@ public class Ring_200 extends Ring {
     public Ring_200(Mechanics mechanics, Board board){
         this.mechanics = mechanics;
         this.board = board;
+
         diameter = 200;
+        index = "E1";
         color = Color.BLUE;
-        startPositionX = board.addressX[2];
-        startPositionY = board.addressY[4];
+
+        board.slotOccupiance.replace(index, this);
+
+        startPositionX = board.dictX.get(index);
+        startPositionY = board.dictY.get(index);
 
         positionX = startPositionX;
         positionY = startPositionY;

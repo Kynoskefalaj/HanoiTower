@@ -57,50 +57,27 @@ public class UserInterface {
         // panel for buttons
         buttonPanel = new JPanel();
         buttonPanel.setBounds(marginX, windowY - lowerMarginY - 50, windowX - 2 * marginX, 50);
-        buttonPanel.setBackground(Color.green);
+        buttonPanel.setBackground(Color.black);
 
         //buttons to move rings
         leftButton = new JButton("LEFT");
-        leftButton.setBackground(Color.yellow);
+        leftButton.setBackground(Color.gray);
         leftButton.setForeground(Color.black);
         leftButton.setFont(normalFont);
         buttonPanel.add(leftButton);
 
         middleButton = new JButton("MIDDLE");
-        middleButton.setBackground(Color.cyan);
+        middleButton.setBackground(Color.gray);
         middleButton.setForeground(Color.black);
         middleButton.setFont(normalFont);
         buttonPanel.add(middleButton);
 
         rightButton = new JButton("RIGHT");
-        rightButton.setBackground(Color.magenta);
+        rightButton.setBackground(Color.gray);
         rightButton.setForeground(Color.black);
         rightButton.setFont(normalFont);
         buttonPanel.add(rightButton);
 
-
-//        int[] columnsMiddle = {marginX + stickPanelWidth / 2,
-//                marginX + innerMargin + stickPanelWidth + stickPanelWidth / 2,
-//                marginX + (innerMargin + stickPanelWidth ) * 2 + stickPanelWidth / 2};
-//
-//        testButton.setBounds(columnsMiddle[1] - 400 / 2, windowY - 200, 400, 50);
-
-//        testButton = new JButton("TEST");
-//        testButton.setBounds(150 + 800, windowY - 50 * 4, 400, 50);
-//        testButton.setBackground(Color.magenta);
-//        testButton.setForeground(Color.black);
-//        testButton.setFont(normalFont);
-//        con.add(testButton);
-
-//        JButton test2Button = new JButton("400");
-//        test2Button.setBackground(Color.cyan);
-//        test2Button.setName("400");
-//        test2Button.setForeground(Color.black);
-//        test2Button.setFont(normalFont);
-//        test2Button.addActionListener(main.handler);
-//        test2Button.setActionCommand("400");
-//        test2Button.setVisible(true);
-//        con.add(test2Button);
 
         con.add(buttonPanel);
         con.add(leftStickPanel);

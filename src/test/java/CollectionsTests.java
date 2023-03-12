@@ -1,3 +1,8 @@
+import rings.Ring;
+import rings.Ring_400;
+import root.Board;
+import root.Mechanics;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -20,8 +25,6 @@ public class CollectionsTests {
         };
 
         int[] addressX = {250, 700, 1150};
-
-        LinkedList<String> leftColumnIndex = new LinkedList<String>();
 
         for (int j = 0; j < 11; j++) {
             for (int i = 0; i < 3; i++) {
@@ -62,9 +65,26 @@ public class CollectionsTests {
             k ++;
         }
 
+        dictY.replace("A1", 2224323);
+
         // looping through every key and value in dictY
         for (String i : dictY.keySet()) {
             System.out.println("key: " + i + " value: " + dictY.get(i));
+        }
+
+        System.out.println();
+        System.out.println();
+
+        HashMap<String, Ring> slotOccupiance = new HashMap<String, Ring>();
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 3; j++) {
+                slotOccupiance.put(index[i][j], null);
+            }
+        }
+
+        // looping through every key and value in dictY
+        for (String i : dictY.keySet()) {
+            System.out.println("key: " + i + " value: " + slotOccupiance.get(i));
         }
 
     }
