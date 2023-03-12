@@ -29,6 +29,15 @@ public class Board {
 
         leftColumnIndex = new LinkedList<String>();
 
+        // creating dictionary with index as key and X coordinates as value
+        dictX = new HashMap<String, Integer>();
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 3; j++) {
+                dictX.put(index[i][j], addressX[j]);
+            }
+        }
+
+
 //        for (int i = 0; i < index.length;)
 
 
