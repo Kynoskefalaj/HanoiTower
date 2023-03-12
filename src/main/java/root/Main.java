@@ -21,9 +21,9 @@ public class Main {
 
     public Main(){
         this.ui = new UserInterface();
-        this.mechanics = new Mechanics(this, ui);
-        this.spawn = new Spawn(mechanics, ui);
         this.board = new Board();
+        this.mechanics = new Mechanics(this, ui, board);
+        this.spawn = new Spawn(mechanics, ui);
     }
 
     public class UniversalHandler implements ActionListener {

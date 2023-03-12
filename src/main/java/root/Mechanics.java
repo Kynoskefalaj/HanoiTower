@@ -2,17 +2,20 @@ package root;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 import rings.Ring;
-import root.Main;
 
 public class Mechanics {
     UserInterface ui;
     Main main;
+    Board board;
 
-    public Mechanics(Main main, UserInterface ui){
+    public Mechanics(Main main, UserInterface ui, Board board){
         this.main = main;
         this.ui = ui;
+        this.board = board;
     }
 
 
@@ -30,9 +33,35 @@ public class Mechanics {
         return button;
     }
 
-    public boolean isFromTop (){
-        //here I will put method body that will check if selected item is from top of stack
-        return false;
+    public boolean isFromTop (Ring selectedRing){
+
+        LinkedList<Ring> occupiedPile = new LinkedList<>();
+
+        for (String i : board.slotOccupiance.keySet()) {
+            Ring foundedRing = board.slotOccupiance.get(i);
+            if (foundedRing == null){
+                break;
+            }
+            //checks if founded ring is in the same column as selected ring
+            else if (selectedRing.positionX == foundedRing.positionX){
+                occupiedPile.addLast(foundedRing);
+            } else
+                break;
+        }
+        //now we have occupiedPile list with Rings in the same column as selected
+        int maxY = Integer.MIN_VALUE; //set first value as the lowest
+        for (int i = 0; i < occupiedPile.size(); i++) {
+            Ring checkedRing = occupiedPile.get(i);
+            int checkedPositionY = checkedRing.positionY;
+            if (maxY < checkedPositionY) {
+                maxY = checkedPositionY;
+            }
+        }
+
+        if (selectedRing.positionY == maxY){
+            return true;
+        } else
+            return false;
     };
 
 }
