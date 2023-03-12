@@ -10,9 +10,8 @@ public class UserInterface {
     public JButton leftButton, middleButton, rightButton, testButton;
     int windowX = 1400;
     int windowY = 800;
-    public int marginX, marginY, innerMargin, stickPanelWidth, stickPanelHeight;
+    public int marginX, upperMarginY, lowerMarginY, innerMargin, stickPanelWidth, stickPanelHeight;
 
-    Main main;
 
     public Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
 
@@ -33,30 +32,34 @@ public class UserInterface {
     public void displayGameScreen(){
 
         //align every margin and set them to 50
-        marginX = 50;
-        marginY = 50;
-        innerMargin = 50;
+        marginX = 225;
+        upperMarginY = 250;
+        lowerMarginY = 50;
+        innerMargin = 400;
 
-        buttonPanel = new JPanel();
-        buttonPanel.setBounds(marginX, windowY - marginY - 50, windowX - 2 * marginX, 50);
-        buttonPanel.setBackground(Color.green);
-
+        //sticks dimensions
         stickPanelWidth = (windowX - 2 * marginX - 2 * innerMargin) / 3; //default 400
-        stickPanelHeight = windowY - 2 * marginY - 100;
+        stickPanelHeight = windowY - upperMarginY - lowerMarginY - 100;
 
+        //sticks made of JPanels
         leftStickPanel = new JPanel();
-        leftStickPanel.setBounds(marginX, marginY, stickPanelWidth, stickPanelHeight);
-        leftStickPanel.setBackground(Color.yellow);
+        leftStickPanel.setBounds(marginX, upperMarginY, stickPanelWidth, stickPanelHeight);
+        leftStickPanel.setBackground(Color.gray);
 
         middleStickPanel = new JPanel();
-        middleStickPanel.setBounds(marginX + stickPanelWidth + innerMargin, marginY, stickPanelWidth, stickPanelHeight);
-        middleStickPanel.setBackground(Color.cyan);
+        middleStickPanel.setBounds(marginX + stickPanelWidth + innerMargin, upperMarginY, stickPanelWidth, stickPanelHeight);
+        middleStickPanel.setBackground(Color.gray);
 
         rightStickPanel = new JPanel();
-        rightStickPanel.setBounds(marginX + 2 * (innerMargin + stickPanelWidth), marginY, stickPanelWidth, stickPanelHeight);
-        rightStickPanel.setBackground(Color.magenta);
+        rightStickPanel.setBounds(marginX + 2 * (innerMargin + stickPanelWidth), upperMarginY, stickPanelWidth, stickPanelHeight);
+        rightStickPanel.setBackground(Color.gray);
 
+        // panel for buttons
+        buttonPanel = new JPanel();
+        buttonPanel.setBounds(marginX, windowY - lowerMarginY - 50, windowX - 2 * marginX, 50);
+        buttonPanel.setBackground(Color.green);
 
+        //buttons to move rings
         leftButton = new JButton("LEFT");
         leftButton.setBackground(Color.yellow);
         leftButton.setForeground(Color.black);
@@ -75,12 +78,19 @@ public class UserInterface {
         rightButton.setFont(normalFont);
         buttonPanel.add(rightButton);
 
-        testButton = new JButton("TEST");
-        testButton.setBounds(150 + 800, windowY - 50 * 4, 400, 50);
-        testButton.setBackground(Color.magenta);
-        testButton.setForeground(Color.black);
-        testButton.setFont(normalFont);
-        con.add(testButton);
+
+//        int[] columnsMiddle = {marginX + stickPanelWidth / 2,
+//                marginX + innerMargin + stickPanelWidth + stickPanelWidth / 2,
+//                marginX + (innerMargin + stickPanelWidth ) * 2 + stickPanelWidth / 2};
+//
+//        testButton.setBounds(columnsMiddle[1] - 400 / 2, windowY - 200, 400, 50);
+
+//        testButton = new JButton("TEST");
+//        testButton.setBounds(150 + 800, windowY - 50 * 4, 400, 50);
+//        testButton.setBackground(Color.magenta);
+//        testButton.setForeground(Color.black);
+//        testButton.setFont(normalFont);
+//        con.add(testButton);
 
 //        JButton test2Button = new JButton("400");
 //        test2Button.setBackground(Color.cyan);
@@ -92,16 +102,9 @@ public class UserInterface {
 //        test2Button.setVisible(true);
 //        con.add(test2Button);
 
-
         con.add(buttonPanel);
         con.add(leftStickPanel);
         con.add(middleStickPanel);
         con.add(rightStickPanel);
-
-        int[] columnsMiddle = {marginX + stickPanelWidth / 2,
-                marginX + innerMargin + stickPanelWidth + stickPanelWidth / 2,
-                marginX + (innerMargin + stickPanelWidth ) * 2 + stickPanelWidth / 2};
-
-        testButton.setBounds(columnsMiddle[1] - 400 / 2, windowY - 200, 400, 50);
         }
     }
