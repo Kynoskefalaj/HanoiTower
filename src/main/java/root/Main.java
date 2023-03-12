@@ -11,9 +11,11 @@ public class Main {
     UniversalHandler handler = new UniversalHandler();
 
     public UserInterface ui;
+    public Board board;
     public Mechanics mechanics;
     public Spawn spawn;
-    public Board board;
+//    public Execute execute;
+
 
     public static void main(String[] args) {
         new Main();
@@ -23,7 +25,8 @@ public class Main {
         this.ui = new UserInterface();
         this.board = new Board();
         this.mechanics = new Mechanics(this, ui, board);
-        this.spawn = new Spawn(mechanics, ui);
+        this.spawn = new Spawn(mechanics, ui, board);
+//        this.execute = new Execute(mechanics, spawn);
     }
 
     public class UniversalHandler implements ActionListener {

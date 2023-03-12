@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Objects;
 
 import rings.Ring;
 
@@ -39,26 +40,26 @@ public class Mechanics {
 
         for (String i : board.slotOccupiance.keySet()) {
             Ring foundedRing = board.slotOccupiance.get(i);
-            if (foundedRing == null){
-                break;
+            if (Objects.isNull(foundedRing)){
+                continue;
             }
             //checks if founded ring is in the same column as selected ring
             else if (selectedRing.positionX == foundedRing.positionX){
                 occupiedPile.addLast(foundedRing);
             } else
-                break;
+                continue;
         }
         //now we have occupiedPile list with Rings in the same column as selected
-        int maxY = Integer.MIN_VALUE; //set first value as the lowest
+        int minY = Integer.MAX_VALUE; //set first value as the lowest
         for (int i = 0; i < occupiedPile.size(); i++) {
             Ring checkedRing = occupiedPile.get(i);
             int checkedPositionY = checkedRing.positionY;
-            if (maxY < checkedPositionY) {
-                maxY = checkedPositionY;
+            if (minY > checkedPositionY) {
+                minY = checkedPositionY;
             }
         }
 
-        if (selectedRing.positionY == maxY){
+        if (selectedRing.positionY == minY){
             return true;
         } else
             return false;

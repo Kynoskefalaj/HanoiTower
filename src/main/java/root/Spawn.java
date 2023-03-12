@@ -6,10 +6,12 @@ public class Spawn {
     Ring ring_400, ring_350, ring_300, ring_250, ring_200, ring_150, ring_100, ring_50;
     Mechanics mechanics;
     UserInterface ui;
-    Board board = new Board();
-    public Spawn (Mechanics mechanics, UserInterface ui) {
+    Board board;
+
+    public Spawn (Mechanics mechanics, UserInterface ui, Board board) {
         this.mechanics = mechanics;
         this.ui = ui;
+        this.board = board;
 
         ring_400 = new Ring_400(mechanics, board);
         ui.con.add(ring_400.ringButton);
@@ -31,6 +33,9 @@ public class Spawn {
 
         ring_100 = new Ring_100(mechanics, board);
         ui.con.add(ring_100.ringButton);
+
+        boolean TESTtoTUTAJ = mechanics.isFromTop(ring_100);
+
 
     }
 
