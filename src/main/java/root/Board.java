@@ -1,6 +1,7 @@
 package root;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Board {
     String[][] index;
@@ -8,6 +9,7 @@ public class Board {
     public int[] addressY = new int[12];
     HashMap<String, Integer> dictX;
     HashMap<String, Integer> dictY;
+    LinkedList<String> leftColumnIndex, middleColumnIndex, rightColumnIndex;
 
     public Board () {
         index = new String[][]{
@@ -24,6 +26,11 @@ public class Board {
                 {"B3", "B2", "B1"},
                 {"A3", "A2", "A1"},
         };
+
+        leftColumnIndex = new LinkedList<String>();
+
+//        for (int i = 0; i < index.length;)
+
 
         // gives values to particular levels from
         // level 0 - 625 to 11 - 75
