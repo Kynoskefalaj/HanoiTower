@@ -2,7 +2,6 @@ package root;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -63,6 +62,8 @@ public class Mechanics {
             return true;
         } else
             return false;
-    };
+    }
+
+    public String findTop(int column)
 
 }

@@ -13,6 +13,8 @@ public class Board {
     public HashMap<String, Integer> dictY;
     public HashMap<String, Ring> slotOccupiance;
 
+    public int leftLastSlot = 625, middleLastSlot = 625, rightLastSlot;
+
 
     public Board () {
         index = new String[][]{

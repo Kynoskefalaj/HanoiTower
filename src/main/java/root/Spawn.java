@@ -34,7 +34,11 @@ public class Spawn {
         ring_100 = new Ring_100(mechanics, board);
         ui.con.add(ring_100.ringButton);
 
-        boolean TESTtoTUTAJ = mechanics.isFromTop(ring_100);
+        //diameter 100 ring is the highest on pile, so below its
+        // height is set as the highest
+        board.rightLastSlot = ring_100.positionY + 50;
+
+        boolean TESTtoTUTAJ = mechanics.isFromTop(ring_150);
 
 
     }
