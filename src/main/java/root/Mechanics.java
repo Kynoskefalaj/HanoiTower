@@ -69,7 +69,7 @@ public class Mechanics {
         //lower last empty slot in that column by 50
         if (ring.positionX == 1150){
             board.rightLastSlot = ring.positionY;
-        } else if (ring.positionX == 750){
+        } else if (ring.positionX == 700){
             board.middleLastSlot = ring.positionY;
         } else {
             board.leftLastSlot = ring.positionY;
@@ -79,10 +79,13 @@ public class Mechanics {
         //set moved ring posY to last empty slot of that column
         if (column == 1150){
             ring.positionY = board.rightLastSlot;
-        } else if (column == 750){
+            board.rightLastSlot -= 50;
+        } else if (column == 700){
             ring.positionY = board.middleLastSlot;
+            board.middleLastSlot -= 50;
         } else {
             ring.positionY = board.leftLastSlot;
+            board.leftLastSlot -= 50;
         }
         //execute
         ring.ringButton.setBounds(ring.positionX - ring.diameter/2,

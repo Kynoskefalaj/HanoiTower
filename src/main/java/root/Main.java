@@ -35,14 +35,14 @@ public class Main {
             String chosenRingName = event.getActionCommand();
 
             switch (chosenRingName) {
-                case "400": break;
-                case "350": break;
-                case "300": break;
-                case "250": break;
-                case "200": break;
-                case "150": break;
+                case "400": board.chosenRing = spawn.ring_400; break;
+                case "350": board.chosenRing = spawn.ring_350; break;
+                case "300": board.chosenRing = spawn.ring_300; break;
+                case "250": board.chosenRing = spawn.ring_250; break;
+                case "200": board.chosenRing = spawn.ring_200; break;
+                case "150": board.chosenRing = spawn.ring_150; break;
                 case "100": board.chosenRing = spawn.ring_100; break;
-                case "50": break;
+                case "50": board.chosenRing = spawn.ring_50; break;
                 case "LEFT": mechanics.moveTo(board.chosenRing, 250); break;
                 case "MIDDLE": mechanics.moveTo(board.chosenRing, 700); break;
                 case "RIGHT": mechanics.moveTo(board.chosenRing, 1150); break;
