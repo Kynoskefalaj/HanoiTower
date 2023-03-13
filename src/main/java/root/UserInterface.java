@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class UserInterface {
+    Main main;
+
     public JFrame window;
     public Container con;
     public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel;
@@ -15,7 +17,8 @@ public class UserInterface {
 
     public Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
 
-    public UserInterface(){
+    public UserInterface(Main main){
+        this.main = main;
         displayWindow();
         displayGameScreen();
     }
@@ -64,18 +67,24 @@ public class UserInterface {
         leftButton.setBackground(Color.gray);
         leftButton.setForeground(Color.black);
         leftButton.setFont(normalFont);
+        leftButton.addActionListener(main.handler);
+        leftButton.setActionCommand("LEFT");
         buttonPanel.add(leftButton);
 
         middleButton = new JButton("MIDDLE");
         middleButton.setBackground(Color.gray);
         middleButton.setForeground(Color.black);
         middleButton.setFont(normalFont);
+        middleButton.addActionListener(main.handler);
+        middleButton.setActionCommand("MIDDLE");
         buttonPanel.add(middleButton);
 
         rightButton = new JButton("RIGHT");
         rightButton.setBackground(Color.gray);
         rightButton.setForeground(Color.black);
         rightButton.setFont(normalFont);
+        rightButton.addActionListener(main.handler);
+        rightButton.setActionCommand("RIGHT");
         buttonPanel.add(rightButton);
 
 

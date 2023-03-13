@@ -15,6 +15,7 @@ public class Board {
 
     public int leftLastSlot = 625, middleLastSlot = 625, rightLastSlot;
 
+    public Ring chosenRing;
 
     public Board () {
         index = new String[][]{

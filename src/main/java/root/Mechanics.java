@@ -64,6 +64,30 @@ public class Mechanics {
             return false;
     }
 
-    public String findTop(int column)
+    public void moveTo(Ring ring, int column){
+        //check from which column is moved ring
+        //lower last empty slot in that column by 50
+        if (ring.positionX == 1150){
+            board.rightLastSlot = ring.positionY;
+        } else if (ring.positionX == 750){
+            board.middleLastSlot = ring.positionY;
+        } else {
+            board.leftLastSlot = ring.positionY;
+        }
+        //change moved ring posX to X of selected column
+        ring.positionX = column;
+        //set moved ring posY to last empty slot of that column
+        if (column == 1150){
+            ring.positionY = board.rightLastSlot;
+        } else if (column == 750){
+            ring.positionY = board.middleLastSlot;
+        } else {
+            ring.positionY = board.leftLastSlot;
+        }
+        //execute
+        ring.ringButton.setBounds(ring.positionX - ring.diameter/2,
+                ring.positionY - 25, ring.diameter, 50);
+//        ring.ringButton.setBounds();
+    }
 
 }
