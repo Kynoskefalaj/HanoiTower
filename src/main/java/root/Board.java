@@ -14,6 +14,7 @@ public class Board {
     public HashMap<String, Ring> slotOccupiance;
 
     public int leftLastSlot = 625, middleLastSlot = 625, rightLastSlot;
+    public int leftLastDiameter = 450, middleLastDiameter = 450, rightLastDiameter;
 
     public Ring chosenRing;
 
