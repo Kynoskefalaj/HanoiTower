@@ -11,6 +11,7 @@ public class Mechanics {
     UserInterface ui;
     Main main;
     Board board;
+    String lastRingIndex;
 
     public Mechanics(Main main, UserInterface ui, Board board){
         this.main = main;
@@ -65,7 +66,7 @@ public class Mechanics {
     }
 
 
-    public void lastOneCheck (Ring ring, int column) {
+    public void lastOneCheck(Ring ring, int column) {
         if (ring.positionY == 625 && column == 1150) {
             board.rightLastDiameter = 450;
         } else if (ring.positionY == 625 && column == 700) {
@@ -73,6 +74,40 @@ public class Mechanics {
         } else if (ring.positionY == 625 && column == 250) {
             board.leftLastDiameter = 450;
         }
+    }
+
+    public int diameterBelow(int column, Ring movedRing){
+        if (movedRing.positionY != 625)
+        {        //checks movedRing position Y and calculate last ring position in that column after moveTo()
+                int lastRingAltitude = movedRing.positionY + 50;
+                //create table with all indexes on desired altitude
+                String lastRingIndex = null;
+                //add every index with right altitude to the list
+                for (String indexInY : board.dictY.keySet()) {
+                    if (board.dictY.get(indexInY) == lastRingAltitude) {
+                        lastRingIndex = indexInY;
+                        //search for index of desired position in specified column
+                        for (String indexInX : board.dictX.keySet()) {
+                            if (board.dictX.get(indexInX) == column) {
+                                lastRingIndex = indexInX;
+                            }
+                        }
+                    }
+                }
+                //search for ring what is in position at specified index
+
+                for (String i : board.slotOccupiance.keySet()) {
+                    if (Objects.equals(i, lastRingIndex)) {
+                        return board.slotOccupiance.get(i).diameter;
+                    }
+                }
+        }
+        return 450;
+
+    }
+
+    public void occuranceUpdate (Ring ring, String index){
+        
     }
 
     public void moveTo(Ring ring, int column) {
@@ -83,14 +118,17 @@ public class Mechanics {
             //lower last empty slot in that column by 50
             if (ring.positionX == 1150) {
                 board.rightLastSlot = ring.positionY;
+                board.rightLastDiameter = diameterBelow(1150, ring);
             } else if (ring.positionX == 700) {
                 board.middleLastSlot = ring.positionY;
+                board.middleLastDiameter = diameterBelow(700, ring);
             } else {
                 board.leftLastSlot = ring.positionY;
+                board.leftLastDiameter = diameterBelow(250, ring);
             }
             //change moved ring posX to X of selected column
             //set moved ring posY to last empty slot of that column
-            if (column == 1150 && ring.diameter < board.rightLastDiameter) {
+            if (column == 1150 && ring.diameter <= board.rightLastDiameter) {
                 ring.positionY = board.rightLastSlot;
                 ring.positionX = column;
                 //execute
@@ -99,7 +137,7 @@ public class Mechanics {
 
                 board.rightLastSlot -= 50;
                 board.rightLastDiameter = ring.diameter;
-            } else if (column == 700 && ring.diameter < board.middleLastDiameter) {
+            } else if (column == 700 && ring.diameter <= board.middleLastDiameter) {
                 //check if left slot was the last and if so, then set there max diameter of
                 // default virtual ring
                 if (ring.positionY == 625){
@@ -113,7 +151,7 @@ public class Mechanics {
 
                 board.middleLastSlot -= 50;
                 board.middleLastDiameter = ring.diameter;
-            } else if (column == 250 && ring.diameter < board.leftLastDiameter){
+            } else if (column == 250 && ring.diameter <= board.leftLastDiameter){
                 ring.positionY = board.leftLastSlot;
                 ring.positionX = column;
                 //execute
