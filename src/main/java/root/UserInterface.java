@@ -8,8 +8,9 @@ public class UserInterface {
 
     public JFrame window;
     public Container con;
-    public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel;
-    public JButton leftButton, middleButton, rightButton, testButton;
+    public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel, testPanel;
+    public JButton leftButton, middleButton, rightButton;
+    public JLabel leftDiameter, midDiameter, rightDiameter, leftAltitude, midAltitude, rightAltitude;
     int windowX = 1400;
     int windowY = 800;
     public int marginX, upperMarginY, lowerMarginY, innerMargin, stickPanelWidth, stickPanelHeight;
@@ -86,6 +87,40 @@ public class UserInterface {
         rightButton.addActionListener(main.handler);
         rightButton.setActionCommand("RIGHT");
         buttonPanel.add(rightButton);
+
+
+        //test panel
+        testPanel = new JPanel();
+        testPanel.setBounds(417, 50 + 18, 800, 100);
+        testPanel.setBackground(Color.black);
+        testPanel.setLayout(new GridLayout(2, 3));
+        con.add(testPanel);
+
+
+        //test labels
+        leftDiameter = new JLabel("test1");
+        leftDiameter.setForeground(Color.green);
+        testPanel.add(leftDiameter);
+
+        midDiameter = new JLabel("test2");
+        midDiameter.setForeground(Color.green);
+        testPanel.add(midDiameter);
+
+        rightDiameter = new JLabel("test3");
+        rightDiameter.setForeground(Color.green);
+        testPanel.add(rightDiameter);
+
+        leftAltitude = new JLabel("test4");
+        leftAltitude.setForeground(Color.green);
+        testPanel.add(leftAltitude);
+
+        midAltitude = new JLabel("test5");
+        midAltitude.setForeground(Color.green);
+        testPanel.add(midAltitude);
+
+        rightAltitude = new JLabel("test6");
+        rightAltitude.setForeground(Color.green);
+        testPanel.add(rightAltitude);
 
 
         con.add(buttonPanel);

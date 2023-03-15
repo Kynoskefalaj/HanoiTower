@@ -122,9 +122,9 @@ public class Mechanics {
     }
 
     public void occuranceUpdate(Ring ring, String oldIndex, int newX, int newY){
-        board.slotOccupiance.remove(oldIndex);
+        board.slotOccupiance.replace(oldIndex, null);
         String newIndex = searchIndex(newX, newY);
-        board.slotOccupiance.put(newIndex, ring);
+        board.slotOccupiance.replace(newIndex, ring);
     }
 
     public void moveTo(Ring ring, int column) {
@@ -192,5 +192,15 @@ public class Mechanics {
         } else {
             //if it is not on top then do nothing
         }
+    }
+
+    public void updateTest(){
+        ui.leftDiameter.setText("" + board.leftLastDiameter);
+        ui.midDiameter.setText("" + board.middleLastDiameter);
+        ui.rightDiameter.setText("" + board.rightLastDiameter);
+
+        ui.leftAltitude.setText("" + board.leftLastSlot);
+        ui.midAltitude.setText("" + board.middleLastSlot);
+        ui.rightAltitude.setText("" + board.rightLastSlot);
     }
 }
