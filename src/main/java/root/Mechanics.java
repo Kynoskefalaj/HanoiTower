@@ -106,14 +106,32 @@ public class Mechanics {
 
     }
 
-    public void occuranceUpdate (Ring ring, String index){
-        
+    public String searchIndex(int x, int y){
+        String searchedIndex;
+        for (String iy : board.dictY.keySet()){
+            if (board.dictY.get(iy) == y){
+                searchedIndex = iy;
+                for (String ix : board.dictX.keySet()){
+                    if ( Objects.equals(searchedIndex, ix) && board.dictX.get(ix) == x){
+                        return searchedIndex;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public void occuranceUpdate(Ring ring, String oldIndex, int newX, int newY){
+        board.slotOccupiance.remove(oldIndex);
+        String newIndex = searchIndex(newX, newY);
+        board.slotOccupiance.put(newIndex, ring);
     }
 
     public void moveTo(Ring ring, int column) {
 
         //check if chosen ring is on top
         if (isFromTop(ring)) {
+            String lastIndex;
             //check from which column is moved ring
             //lower last empty slot in that column by 50
             if (ring.positionX == 1150) {
@@ -126,6 +144,9 @@ public class Mechanics {
                 board.leftLastSlot = ring.positionY;
                 board.leftLastDiameter = diameterBelow(250, ring);
             }
+
+            lastIndex = ring.index;
+
             //change moved ring posX to X of selected column
             //set moved ring posY to last empty slot of that column
             if (column == 1150 && ring.diameter <= board.rightLastDiameter) {
@@ -137,6 +158,7 @@ public class Mechanics {
 
                 board.rightLastSlot -= 50;
                 board.rightLastDiameter = ring.diameter;
+                occuranceUpdate(ring, lastIndex, 1150, ring.positionY);
             } else if (column == 700 && ring.diameter <= board.middleLastDiameter) {
                 //check if left slot was the last and if so, then set there max diameter of
                 // default virtual ring
@@ -151,6 +173,7 @@ public class Mechanics {
 
                 board.middleLastSlot -= 50;
                 board.middleLastDiameter = ring.diameter;
+                occuranceUpdate(ring, lastIndex, 700, ring.positionY);
             } else if (column == 250 && ring.diameter <= board.leftLastDiameter){
                 ring.positionY = board.leftLastSlot;
                 ring.positionX = column;
@@ -160,6 +183,7 @@ public class Mechanics {
 
                 board.leftLastSlot -= 50;
                 board.leftLastDiameter = ring.diameter;
+                occuranceUpdate(ring, lastIndex, 250, ring.positionY);
             }
 
             //check if moved ring was the last one in column so we have to set max diameter there
