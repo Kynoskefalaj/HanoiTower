@@ -13,7 +13,7 @@ public class Mechanics {
     Board board;
     String lastRingIndex;
 
-    public Mechanics(Main main, UserInterface ui, Board board){
+    public Mechanics(Main main, UserInterface ui, Board board) {
         this.main = main;
         this.ui = ui;
         this.board = board;
@@ -21,9 +21,9 @@ public class Mechanics {
 
 
     // makes Button from Ring extended classes
-    public JButton makeButton(Ring ring, JButton button, String name, Color color, String action){
+    public JButton makeButton(Ring ring, JButton button, String name, Color color, String action) {
         button.setBackground(color);
-        button.setBounds(ring.startPositionX - ring.diameter/2,
+        button.setBounds(ring.startPositionX - ring.diameter / 2,
                 ring.startPositionY - 25, ring.diameter, 50);
         button.setName(name);
         button.setForeground(Color.black);
@@ -34,17 +34,17 @@ public class Mechanics {
         return button;
     }
 
-    public boolean isFromTop (Ring selectedRing){
+    public boolean isFromTop(Ring selectedRing) {
 
         LinkedList<Ring> occupiedPile = new LinkedList<>();
 
         for (String i : board.slotOccupiance.keySet()) {
             Ring foundedRing = board.slotOccupiance.get(i);
-            if (Objects.isNull(foundedRing)){
+            if (Objects.isNull(foundedRing)) {
                 continue;
             }
             //checks if founded ring is in the same column as selected ring
-            else if (selectedRing.positionX == foundedRing.positionX){
+            else if (selectedRing.positionX == foundedRing.positionX) {
                 occupiedPile.addLast(foundedRing);
             } else
                 continue;
@@ -59,7 +59,7 @@ public class Mechanics {
             }
         }
 
-        if (selectedRing.positionY == minY){
+        if (selectedRing.positionY == minY) {
             return true;
         } else
             return false;
@@ -76,35 +76,48 @@ public class Mechanics {
         }
     }
 
-    public int diameterBelow(int column, Ring movedRing){
-        if (movedRing.positionY != 625)
-        {        //checks movedRing position Y and calculate last ring position in that column after moveTo()
-                int lastRingAltitude = movedRing.positionY + 50;
-                //create table with all indexes on desired altitude
-                String lastRingIndex = null;
-                //add every index with right altitude to the list
-                for (String indexInY : board.dictY.keySet()) {
-                    if (board.dictY.get(indexInY) == lastRingAltitude) {
-                        lastRingIndex = indexInY;
-                        //search for index of desired position in specified column
-                        for (String indexInX : board.dictX.keySet()) {
-                            if (board.dictX.get(indexInX) == column) {
-                                lastRingIndex = indexInX;
-                            }
+    public int diameterBelow(int column, Ring movedRing) {
+        String lastRingIndex = null;
+        boolean done = false;
+        if (movedRing.positionY != 625){
+            //checks movedRing position Y and calculate last ring position in that column after moveTo()
+            int lastRingAltitude = movedRing.positionY + 50;
+            //create table with all indexes on desired altitude
+
+            //add every index with right altitude to the list
+            for (String indexInY : board.dictY.keySet()) {
+                if (board.dictY.get(indexInY) == lastRingAltitude) {
+                    lastRingIndex = indexInY;
+                    //search for index of desired position in specified column
+                    for (String indexInX : board.dictX.keySet()) {
+                            if (!Objects.equals(indexInX, lastRingIndex)) {
+                                continue;
+                                }
+                        if (board.dictX.get(indexInX) == column) {
+                            lastRingIndex = indexInX;
+                            done = true;
+                            break;
                         }
                     }
                 }
-                //search for ring what is in position at specified index
-
-                for (String i : board.slotOccupiance.keySet()) {
-                    if (Objects.equals(i, lastRingIndex)) {
-                        return board.slotOccupiance.get(i).diameter;
-                    }
+                if (done){
+                    break;
                 }
+
+            }
+            //search for ring what is in position at specified index
+
+            for (String i : board.slotOccupiance.keySet()) {
+                if (Objects.equals(i, lastRingIndex)) {
+                    return board.slotOccupiance.get(i).diameter;
+                }
+            }
         }
         return 450;
 
     }
+
+
 
     public String searchIndex(int x, int y){
         String searchedIndex;
