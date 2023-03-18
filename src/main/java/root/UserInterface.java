@@ -7,6 +7,7 @@ public class UserInterface {
     Main main;
 
     public JFrame window;
+    public JLayeredPane layeredPane;
     public Container con;
     public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel, testPanel;
     public JButton leftButton, middleButton, rightButton;
@@ -31,6 +32,10 @@ public class UserInterface {
         window.setVisible(true);
         window.setLayout(null);
         con = window.getContentPane();
+
+        //set layers for elements
+        layeredPane = new JLayeredPane();
+        layeredPane.setLayout(new BorderLayout());
     }
 
     public void displayGameScreen(){
@@ -57,6 +62,7 @@ public class UserInterface {
         rightStickPanel = new JPanel();
         rightStickPanel.setBounds(marginX + 2 * (innerMargin + stickPanelWidth), upperMarginY, stickPanelWidth, stickPanelHeight);
         rightStickPanel.setBackground(Color.gray);
+//        leftStickPanel.setVisible(false);
 
         // panel for buttons
         buttonPanel = new JPanel();
@@ -125,6 +131,7 @@ public class UserInterface {
 
         con.add(buttonPanel);
         con.add(leftStickPanel);
+        con.add(layeredPane);
         con.add(middleStickPanel);
         con.add(rightStickPanel);
         }

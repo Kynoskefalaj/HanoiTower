@@ -103,21 +103,17 @@ public class Mechanics {
                 if (done){
                     break;
                 }
-
             }
             //search for ring what is in position at specified index
-
             for (String i : board.slotOccupiance.keySet()) {
                 if (Objects.equals(i, lastRingIndex)) {
-                    return board.slotOccupiance.get(i).diameter;
+                    Ring foundRing = board.slotOccupiance.get(i);
+                    return foundRing.diameter;
                 }
             }
         }
         return 450;
-
     }
-
-
 
     public String searchIndex(int x, int y){
         String searchedIndex;
@@ -198,12 +194,6 @@ public class Mechanics {
                 board.leftLastDiameter = ring.diameter;
                 occuranceUpdate(ring, lastIndex, 250, ring.positionY);
             }
-
-            //check if moved ring was the last one in column so we have to set max diameter there
-
-
-        } else {
-            //if it is not on top then do nothing
         }
     }
 
