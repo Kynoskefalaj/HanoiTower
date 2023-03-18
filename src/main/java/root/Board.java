@@ -13,28 +13,28 @@ public class Board {
     public HashMap<String, Integer> dictY;
     public HashMap<String, Ring> slotOccupiance;
 
-    public int leftLastSlot = 625, middleLastSlot = 625, rightLastSlot;
-    public int leftLastDiameter = 450, middleLastDiameter = 450, rightLastDiameter;
+    public int leftLastSlot, middleLastSlot = 625, rightLastSlot = 625;
+    public int leftLastDiameter, middleLastDiameter = 450, rightLastDiameter = 450;
 
     public Ring chosenRing;
 
     public Board () {
         index = new String[][]{
-                {"L3", "L2", "L1"},
-                {"K3", "K2", "K1"},
-                {"J3", "J2", "J1"},
-                {"I3", "I2", "I1"},
-                {"H3", "H2", "H1"},
-                {"G3", "G2", "G1"},
-                {"F3", "F2", "F1"},
-                {"E3", "E2", "E1"},
-                {"D3", "D2", "D1"},
-                {"C3", "C2", "C1"},
-                {"B3", "B2", "B1"},
-                {"A3", "A2", "A1"},
+                {"A12", "B12", "C12"},
+                {"A11", "B11", "C11"},
+                {"A10", "B10", "C10"},
+                {"A9",  "B9" , "C9" },
+                {"A8",  "B8" , "C8" },
+                {"A7",  "B7" , "C7" },
+                {"A6",  "B6" , "C6" },
+                {"A5",  "B5" , "C5" },
+                {"A4",  "B4" , "C4" },
+                {"A3",  "B3" , "C3" },
+                {"A2",  "B2" , "C2" },
+                {"A1",  "B1" , "C1" },
         };
 
-        // gives values to particular levels from
+        // give values to particular levels from
         // level 0 - 625 to 11 - 75 in addressY[]
         int y = 625;
         for (int i = 0; i < 12; i++){

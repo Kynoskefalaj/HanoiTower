@@ -12,6 +12,7 @@ public class Mechanics {
     Main main;
     Board board;
     String lastRingIndex;
+    int counter;
 
     public Mechanics(Main main, UserInterface ui, Board board) {
         this.main = main;
@@ -108,6 +109,9 @@ public class Mechanics {
             for (String i : board.slotOccupiance.keySet()) {
                 if (Objects.equals(i, lastRingIndex)) {
                     Ring foundRing = board.slotOccupiance.get(i);
+                    if (foundRing == null){
+                        String test = "eeeeeeeeeeeee";
+                    }
                     return foundRing.diameter;
                 }
             }
@@ -132,11 +136,14 @@ public class Mechanics {
 
     public void occuranceUpdate(Ring ring, String oldIndex, int newX, int newY){
         board.slotOccupiance.replace(oldIndex, null);
+        //probably here below is source of bug
         String newIndex = searchIndex(newX, newY);
         board.slotOccupiance.replace(newIndex, ring);
     }
 
     public void moveTo(Ring ring, int column) {
+        counter += 1;
+//        ui.counter.setText("" + counter);
 
         //check if chosen ring is on top
         if (isFromTop(ring)) {

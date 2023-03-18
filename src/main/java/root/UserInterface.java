@@ -11,7 +11,7 @@ public class UserInterface {
     public Container con;
     public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel, testPanel;
     public JButton leftButton, middleButton, rightButton;
-    public JLabel leftDiameter, midDiameter, rightDiameter, leftAltitude, midAltitude, rightAltitude;
+    public JLabel leftDiameter, midDiameter, rightDiameter, leftAltitude, midAltitude, rightAltitude, counter;
     int windowX = 1400;
     int windowY = 800;
     public int marginX, upperMarginY, lowerMarginY, innerMargin, stickPanelWidth, stickPanelHeight;
@@ -127,6 +127,11 @@ public class UserInterface {
         rightAltitude = new JLabel("test6");
         rightAltitude.setForeground(Color.green);
         testPanel.add(rightAltitude);
+
+//        counter = new JLabel("count");
+//        counter.setForeground(Color.red);
+//        counter.setVisible(false);
+//        testPanel.add(counter);
 
 
         con.add(buttonPanel);

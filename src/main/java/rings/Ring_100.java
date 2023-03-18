@@ -13,7 +13,7 @@ public class Ring_100 extends Ring {
         this.board = board;
 
         diameter = 100;
-        index = "G1";
+        index = "A7";
         color = Color.WHITE;
 
         board.slotOccupiance.replace(index, this);
