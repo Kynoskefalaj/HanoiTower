@@ -139,6 +139,7 @@ public class Mechanics {
         //probably here below is source of bug
         String newIndex = searchIndex(newX, newY);
         board.slotOccupiance.replace(newIndex, ring);
+        ring.index = newIndex;
     }
 
     public void moveTo(Ring ring, int column) {
