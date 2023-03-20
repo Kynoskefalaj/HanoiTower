@@ -205,6 +205,17 @@ public class Mechanics {
         }
     }
 
+    //method that outputs linkedList with all rings from specified column
+    public LinkedList<Ring> getRingsFromColumn (String column){
+        LinkedList<Ring> ringsFromColumn= new LinkedList<>();
+        for (String index: board.slotOccupiance.keySet()){
+            if (index.startsWith(column) && board.slotOccupiance.get(index) != null){
+                ringsFromColumn.addLast(board.slotOccupiance.get(index));
+            }
+        }
+        return ringsFromColumn;
+    }
+
     public void updateTest(){
         ui.leftDiameter.setText("" + board.leftLastDiameter);
         ui.midDiameter.setText("" + board.middleLastDiameter);
