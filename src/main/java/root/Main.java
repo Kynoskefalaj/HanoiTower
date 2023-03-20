@@ -49,6 +49,7 @@ public class Main {
                     mechanics.updateTest(); break;
                 case "RIGHT": mechanics.moveTo(board.chosenRing, 1150);
                     mechanics.updateTest(); break;
+                case "HINT": System.out.println("Dziaua jak natura chciaua"); break;
             }
         }
     }

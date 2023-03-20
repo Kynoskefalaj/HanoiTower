@@ -9,8 +9,8 @@ public class UserInterface {
     public JFrame window;
     public JLayeredPane layeredPane;
     public Container con;
-    public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel, testPanel;
-    public JButton leftButton, middleButton, rightButton;
+    public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel, testPanel, aiPanel;
+    public JButton leftButton, middleButton, rightButton, aiButton;
     public JLabel leftDiameter, midDiameter, rightDiameter, leftAltitude, midAltitude, rightAltitude, counter;
     int windowX = 1400;
     int windowY = 800;
@@ -127,6 +127,21 @@ public class UserInterface {
         rightAltitude = new JLabel("test6");
         rightAltitude.setForeground(Color.green);
         testPanel.add(rightAltitude);
+
+        aiPanel = new JPanel();
+        aiPanel.setBounds(50, 50, 150, 100);
+        aiPanel.setBackground(Color.black);
+        aiPanel.setVisible(true);
+        con.add(aiPanel);
+
+        aiButton = new JButton("HINT");
+        aiButton.setBackground(Color.black);
+        aiButton.setForeground(Color.white);
+        aiButton.setFont(normalFont);
+        aiButton.addActionListener(main.handler);
+        aiButton.setActionCommand("HINT");
+        aiPanel.add(aiButton);
+
 
 //        counter = new JLabel("count");
 //        counter.setForeground(Color.red);
