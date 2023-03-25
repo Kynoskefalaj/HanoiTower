@@ -43,13 +43,27 @@ public class Main {
                 case "150": board.chosenRing = spawn.ring_150; break;
                 case "100": board.chosenRing = spawn.ring_100; break;
                 case "50": board.chosenRing = spawn.ring_50; break;
-                case "LEFT": mechanics.moveTo(board.chosenRing, 250);
-                    mechanics.updateTest(); break;
-                case "MIDDLE": mechanics.moveTo(board.chosenRing, 700);
-                    mechanics.updateTest(); break;
-                case "RIGHT": mechanics.moveTo(board.chosenRing, 1150);
-                    mechanics.updateTest(); break;
-                case "HINT": System.out.println("Dziaua jak natura chciaua"); break;
+                case "LEFT":
+                    mechanics.moveTo(board.chosenRing, 250);
+//                    mechanics.moveToOrSelect(250);
+                    mechanics.updateTest();
+                    break;
+
+                case "MIDDLE":
+                    mechanics.moveTo(board.chosenRing, 700);
+//                    mechanics.moveToOrSelect(700);
+                    mechanics.updateTest();
+                    break;
+
+                case "RIGHT":
+                    mechanics.moveTo(board.chosenRing, 1150);
+//                    mechanics.moveToOrSelect(1150);
+                    mechanics.updateTest();
+                    break;
+
+                case "HINT":
+                    System.out.println("Dziaua jak natura chciaua");
+                    break;
             }
         }
     }
