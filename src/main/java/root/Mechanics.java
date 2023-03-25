@@ -13,6 +13,7 @@ public class Mechanics {
     Board board;
     String lastRingIndex;
     int counter;
+    public int move_SelectSwitch = 0;
 
     public Mechanics(Main main, UserInterface ui, Board board) {
         this.main = main;
@@ -224,5 +225,49 @@ public class Mechanics {
         ui.leftAltitude.setText("" + board.leftLastSlot);
         ui.midAltitude.setText("" + board.middleLastSlot);
         ui.rightAltitude.setText("" + board.rightLastSlot);
+    }
+
+    //method that find top ring in specified column
+    public Ring findTopRing(String column){
+        LinkedList<Ring> ringsFromColumn = getRingsFromColumn(column);
+        int topLevel = 1;
+        int level = 0;
+        Ring topRing = null;
+
+        for (Ring ring : ringsFromColumn){
+            if (ring.index.length() == 2) {
+                level = ring.index.charAt(1);
+            }
+            else if (ring.index.length() == 3) {
+                //code below alweys set last two digits from index String
+                String levelString = ring.index.substring(ring.index.length() - 2);
+                level = Integer.parseInt(levelString);
+            }
+            if (level > topLevel){
+                topLevel = level;
+                topRing = ring;
+            }
+        }
+        return topRing;
+    }
+
+    public void moveToOrSelect(int column){
+        //increment switch
+        move_SelectSwitch += 1;
+
+        if (move_SelectSwitch % 2 == 0){
+            moveTo(board.chosenRing, column);
+        }
+        else if (move_SelectSwitch % 2 == 1){
+            if (column == 250){
+                board.chosenRing = findTopRing("A");
+            }
+            else if (column == 700){
+                board.chosenRing = findTopRing("B");
+            }
+            else if (column == 1150){
+                board.chosenRing = findTopRing("C");
+            }
+        }
     }
 }

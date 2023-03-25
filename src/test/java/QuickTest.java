@@ -5,5 +5,7 @@ public class QuickTest {
         String lastTwoCharacters = str.substring(str.length() - 2);
 
         System.out.println(lastTwoCharacters);
+
+        System.out.println("" + 53463757%2);
     }
 }
