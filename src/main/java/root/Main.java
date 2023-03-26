@@ -14,6 +14,8 @@ public class Main {
     public Board board;
     public Mechanics mechanics;
     public Spawn spawn;
+    public AI ai;
+
 //    public Execute execute;
 
 
@@ -26,6 +28,7 @@ public class Main {
         this.board = new Board();
         this.mechanics = new Mechanics(this, ui, board);
         this.spawn = new Spawn(mechanics, ui, board);
+        this.ai = new AI(mechanics, board, spawn);
 //        this.execute = new Execute(mechanics, spawn);
     }
 
@@ -63,6 +66,9 @@ public class Main {
 
                 case "HINT":
                     System.out.println("Dziaua jak natura chciaua");
+                    ai.move();
+                    ai.hintButtonClickCounter += 1;
+
                     break;
             }
         }

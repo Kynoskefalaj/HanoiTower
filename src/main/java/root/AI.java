@@ -9,13 +9,19 @@ public class AI {
     public Mechanics mechanics;
     public Board board;
     public Spawn s;
-    String[] oddMovesAlgorithm = {"AB", "AC", "BC"};
-    String[] evenMovesAlgorithm = {"AC", "AB", "BC"};
+    String[] oddMovesAlgorithm = {"AC", "AB", "BC"};
+    String[] evenMovesAlgorithm = {"AB", "AC", "BC"};
+
+    public int moveCounter = 0;
+
+    public int hintButtonClickCounter = 0;
 
     public AI(Mechanics mechanics, Board board, Spawn s){
         this.mechanics = mechanics;
         this.board = board;
         this.s = s;
+
+        oddOrEvenHeight();
     }
 
 
@@ -29,6 +35,13 @@ public class AI {
         movedRing = mechanics.findTopRing(oldColumn);
         //find top ring in newColumn
         coveredRing = mechanics.findTopRing(newColumn);
+        if (coveredRing == null){
+            return true;
+        }
+
+        if (movedRing == null){
+            return false;
+        }
         //compare its diameters and return true if ring from oldColumn is smaller then other
         return movedRing.diameter < coveredRing.diameter;
     }
@@ -45,7 +58,7 @@ public class AI {
             }
         } else if (isMovePossible(newColumn, oldColumn)){
             board.chosenRing = mechanics.findTopRing(newColumn);
-            switch (newColumn) {
+            switch (oldColumn) {
                 case "A" -> mechanics.moveTo(board.chosenRing, 250);
                 case "B" -> mechanics.moveTo(board.chosenRing, 700);
                 case "C" -> mechanics.moveTo(board.chosenRing, 1150);
@@ -69,7 +82,30 @@ public class AI {
         } else
             board.towerHeightOddOrEven = "odd";
     }
+
     //method that input column names and execute move
+    public void move(){
+        if (Objects.equals(board.towerHeightOddOrEven, "even")){
+            String firstColumn = String.valueOf(evenMovesAlgorithm[moveCounter].charAt(0));
+            String secondColumn = String.valueOf(evenMovesAlgorithm[moveCounter].charAt(1));
+
+            switch (moveCounter) {
+                case 0 -> {moveBetweenColumns(firstColumn, secondColumn); moveCounter = 1;}
+                case 1 -> {moveBetweenColumns(firstColumn, secondColumn); moveCounter = 2;}
+                case 2 -> {moveBetweenColumns(firstColumn, secondColumn); moveCounter = 0;}
+            }
+        }
+        else if (Objects.equals(board.towerHeightOddOrEven, "odd")){
+            String firstColumn = String.valueOf(oddMovesAlgorithm[moveCounter].charAt(0));
+            String secondColumn = String.valueOf(oddMovesAlgorithm[moveCounter].charAt(1));
+
+            switch (moveCounter) {
+                case 0 -> {moveBetweenColumns(firstColumn, secondColumn); moveCounter = 1;}
+                case 1 -> {moveBetweenColumns(firstColumn, secondColumn); moveCounter = 2;}
+                case 2 -> {moveBetweenColumns(firstColumn, secondColumn); moveCounter = 0;}
+            }
+        }
+    }
 //    public void move()
 
 }

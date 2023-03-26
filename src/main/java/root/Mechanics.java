@@ -230,16 +230,16 @@ public class Mechanics {
     //method that find top ring in specified column
     public Ring findTopRing(String column){
         LinkedList<Ring> ringsFromColumn = getRingsFromColumn(column);
-        int topLevel = 1;
+        int topLevel = 0;
         int level = 0;
         Ring topRing = null;
 
         for (Ring ring : ringsFromColumn){
             if (ring.index.length() == 2) {
-                level = ring.index.charAt(1);
+                level = Integer.parseInt(String.valueOf(ring.index.charAt(1)));
             }
             else if (ring.index.length() == 3) {
-                //code below alweys set last two digits from index String
+                //code below always set last two digits from index String
                 String levelString = ring.index.substring(ring.index.length() - 2);
                 level = Integer.parseInt(levelString);
             }
