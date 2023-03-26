@@ -32,8 +32,9 @@ public class AI {
         //compare its diameters and return true if ring from oldColumn is smaller then other
         return movedRing.diameter < coveredRing.diameter;
     }
-    //method that execute the best possible move
-    public void move(String oldColumn, String newColumn){
+
+    //method that execute move between two columns
+    public void moveBetweenColumns(String oldColumn, String newColumn){
         //check if it is possible to execute move
         if (isMovePossible(oldColumn, newColumn)){
             board.chosenRing = mechanics.findTopRing(oldColumn);
@@ -51,5 +52,24 @@ public class AI {
             }
         }
     }
-    //method that repeats moves until the puzzle is resolved
+
+    //method which checks height of tower and set values in Board class
+    //if its odd or even
+    public void oddOrEvenHeight(){
+        int count = 0;
+        for (String i: board.slotOccupiance.keySet()){
+            if (board.slotOccupiance.get(i) != null){
+                count += 1;
+            }
+        }
+        board.towerHeight = count;
+
+        if (count % 2 == 0){
+            board.towerHeightOddOrEven = "even";
+        } else
+            board.towerHeightOddOrEven = "odd";
+    }
+    //method that input column names and execute move
+//    public void move()
+
 }

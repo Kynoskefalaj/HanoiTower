@@ -17,6 +17,8 @@ public class Board {
     public int leftLastDiameter, middleLastDiameter = 450, rightLastDiameter = 450;
 
     public Ring chosenRing;
+    public int towerHeight;
+    public String towerHeightOddOrEven;
 
     public Board () {
         index = new String[][]{
