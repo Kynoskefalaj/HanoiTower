@@ -10,7 +10,7 @@ public class UserInterface {
     public JLayeredPane layeredPane;
     public Container con;
     public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel, testPanel, aiPanel;
-    public JButton leftButton, middleButton, rightButton, aiButton;
+    public JButton leftButton, middleButton, rightButton, aiButton, automaticSolveButton;
     public JLabel leftDiameter, midDiameter, rightDiameter, leftAltitude, midAltitude, rightAltitude, counter;
     int windowX = 1400;
     int windowY = 800;
@@ -129,18 +129,26 @@ public class UserInterface {
         testPanel.add(rightAltitude);
 
         aiPanel = new JPanel();
-        aiPanel.setBounds(50, 50, 150, 100);
+        aiPanel.setBounds(50, 50, 200, 100);
         aiPanel.setBackground(Color.black);
         aiPanel.setVisible(true);
         con.add(aiPanel);
 
-        aiButton = new JButton("HINT");
+        aiButton = new JButton("MOVE");
         aiButton.setBackground(Color.black);
         aiButton.setForeground(Color.white);
         aiButton.setFont(normalFont);
         aiButton.addActionListener(main.handler);
-        aiButton.setActionCommand("HINT");
+        aiButton.setActionCommand("MOVE");
         aiPanel.add(aiButton);
+
+        automaticSolveButton = new JButton ("RESOLVE");
+        automaticSolveButton.setBackground(Color.BLACK);
+        automaticSolveButton.setForeground(Color.white);
+        automaticSolveButton.setFont(normalFont);
+        automaticSolveButton.addActionListener(main.handler);
+        automaticSolveButton.setActionCommand("RESOLVE");
+        aiPanel.add(automaticSolveButton);
 
 
 //        counter = new JLabel("count");

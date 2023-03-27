@@ -64,8 +64,7 @@ public class Main {
                     mechanics.updateTest();
                     break;
 
-                case "HINT":
-                    System.out.println("Dziaua jak natura chciaua");
+                case "MOVE":
                     ai.move();
                     ai.hintButtonClickCounter += 1;
 
