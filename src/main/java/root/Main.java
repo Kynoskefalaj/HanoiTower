@@ -1,8 +1,5 @@
 package root;
 
-import rings.Ring;
-import rings.Ring_100;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -68,6 +65,20 @@ public class Main {
                     ai.move();
                     ai.hintButtonClickCounter += 1;
 
+                    break;
+
+                case "RESOLVE":
+                    try {
+                        ai.autoResolve();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case "RESET":
+                    mechanics.resetTower();
+                    //reset counter to default value
+                    ai.moveCounter = 0;
                     break;
             }
         }

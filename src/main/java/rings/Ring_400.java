@@ -12,7 +12,8 @@ public class Ring_400 extends Ring {
         this.board = board;
 
         diameter = 400;
-        index = "A1";
+        startIndex = "A1";
+        index = startIndex;
         color = Color.green;
 
         //replaces null value with this ring body

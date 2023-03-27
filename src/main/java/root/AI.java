@@ -2,6 +2,9 @@ package root;
 
 import rings.Ring;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -13,6 +16,7 @@ public class AI {
     String[] evenMovesAlgorithm = {"AB", "AC", "BC"};
 
     public int moveCounter = 0;
+    Timer timer;
 
     public int hintButtonClickCounter = 0;
 
@@ -107,5 +111,25 @@ public class AI {
         }
     }
 //    public void move()
+//    public void autoResolve() throws InterruptedException {
+//        move();
+//        Thread.sleep(10);
+//        while (!Objects.equals(s.ring_100.index, "C7")){
+//            autoResolve();
+//        }
+//    }
+
+    public void autoResolve() throws InterruptedException {
+        timer = new Timer(35, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                if (!Objects.equals(s.ring_100.index, "C7")){
+                    move();
+                } else {
+                    timer.stop();
+                }
+            }
+        });
+        timer.start();
+    }
 
 }

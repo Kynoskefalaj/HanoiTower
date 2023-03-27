@@ -1,5 +1,7 @@
 package root;
 
+import rings.Ring;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,7 +12,7 @@ public class UserInterface {
     public JLayeredPane layeredPane;
     public Container con;
     public JPanel leftStickPanel, middleStickPanel, rightStickPanel, buttonPanel, testPanel, aiPanel;
-    public JButton leftButton, middleButton, rightButton, aiButton, automaticSolveButton;
+    public JButton leftButton, middleButton, rightButton, aiButton, automaticSolveButton, resetButton;
     public JLabel leftDiameter, midDiameter, rightDiameter, leftAltitude, midAltitude, rightAltitude, counter;
     int windowX = 1400;
     int windowY = 800;
@@ -19,13 +21,13 @@ public class UserInterface {
 
     public Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
 
-    public UserInterface(Main main){
+    public UserInterface(Main main) {
         this.main = main;
         displayWindow();
         displayGameScreen();
     }
 
-    protected void displayWindow(){
+    protected void displayWindow() {
         window = new JFrame(); //creating main window as an instance of JFrame
         window.setSize(windowX + 13, windowY + 36);
         window.getContentPane().setBackground(Color.BLACK);
@@ -38,7 +40,7 @@ public class UserInterface {
         layeredPane.setLayout(new BorderLayout());
     }
 
-    public void displayGameScreen(){
+    public void displayGameScreen() {
 
         //align every margin and set them to 50
         marginX = 225;
@@ -101,6 +103,7 @@ public class UserInterface {
         testPanel.setBackground(Color.black);
         testPanel.setLayout(new GridLayout(2, 3));
         con.add(testPanel);
+        testPanel.setVisible(false);
 
 
         //test labels
@@ -129,7 +132,7 @@ public class UserInterface {
         testPanel.add(rightAltitude);
 
         aiPanel = new JPanel();
-        aiPanel.setBounds(50, 50, 200, 100);
+        aiPanel.setBounds(50, 50, 200, 150);
         aiPanel.setBackground(Color.black);
         aiPanel.setVisible(true);
         con.add(aiPanel);
@@ -142,13 +145,21 @@ public class UserInterface {
         aiButton.setActionCommand("MOVE");
         aiPanel.add(aiButton);
 
-        automaticSolveButton = new JButton ("RESOLVE");
+        automaticSolveButton = new JButton("RESOLVE");
         automaticSolveButton.setBackground(Color.BLACK);
         automaticSolveButton.setForeground(Color.white);
         automaticSolveButton.setFont(normalFont);
         automaticSolveButton.addActionListener(main.handler);
         automaticSolveButton.setActionCommand("RESOLVE");
         aiPanel.add(automaticSolveButton);
+
+        resetButton = new JButton("RESET");
+        resetButton.setBackground(Color.BLACK);
+        resetButton.setForeground(Color.white);
+        resetButton.setFont(normalFont);
+        resetButton.addActionListener(main.handler);
+        resetButton.setActionCommand("RESET");
+        aiPanel.add(resetButton);
 
 
 //        counter = new JLabel("count");
@@ -162,5 +173,7 @@ public class UserInterface {
         con.add(layeredPane);
         con.add(middleStickPanel);
         con.add(rightStickPanel);
-        }
     }
+
+}
+

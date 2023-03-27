@@ -12,7 +12,7 @@ public class Ring {
     public JButton ringButton;
     public Board board;
     public Mechanics mechanics;
-    public String index;
+    public String index, startIndex;
     public int positionX, startPositionX;
     public int positionY, startPositionY;
 

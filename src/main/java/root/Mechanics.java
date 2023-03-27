@@ -206,6 +206,14 @@ public class Mechanics {
         }
     }
 
+    public void updateRingPosition(Ring ring){
+        ring.positionX = board.dictX.get(ring.index);
+        ring.positionY = board.dictY.get(ring.index);
+
+        ring.ringButton.setBounds(ring.positionX - ring.diameter / 2,
+                ring.positionY - 25, ring.diameter, 50);
+    }
+
     //method that outputs linkedList with all rings from specified column
     public LinkedList<Ring> getRingsFromColumn (String column){
         LinkedList<Ring> ringsFromColumn= new LinkedList<>();
@@ -269,5 +277,31 @@ public class Mechanics {
                 board.chosenRing = findTopRing("C");
             }
         }
+    }
+
+    public void resetTower(){
+        //deletes old RingObjects and adds new on default positions
+//        main.spawn = new Spawn(main.mechanics, main.ui, main.board);
+
+        for (String i: board.slotOccupiance.keySet()){
+            //create reference to ring in that HashMap
+            Ring tempRing = board.slotOccupiance.get(i);
+            if (tempRing != null){
+                tempRing.index = tempRing.startIndex;
+                updateRingPosition(tempRing);
+                board.slotOccupiance.replace(tempRing.index, tempRing);
+            }
+        }
+        //delete every ring in column B and C
+        for (String i: board.slotOccupiance.keySet()){
+            if (i.charAt(0) != 'A' && board.slotOccupiance.get(i) != null){
+                board.slotOccupiance.replace(i, null);
+            }
+        }
+
+        board.rightLastSlot = 625;
+        board.middleLastSlot = 625;
+        board.rightLastDiameter = 450;
+        board.middleLastDiameter = 450;
     }
 }
