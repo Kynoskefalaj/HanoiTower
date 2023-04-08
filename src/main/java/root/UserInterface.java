@@ -1,7 +1,5 @@
 package root;
 
-import rings.Ring;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -160,13 +158,6 @@ public class UserInterface {
         resetButton.addActionListener(main.handler);
         resetButton.setActionCommand("RESET");
         aiPanel.add(resetButton);
-
-
-//        counter = new JLabel("count");
-//        counter.setForeground(Color.red);
-//        counter.setVisible(false);
-//        testPanel.add(counter);
-
 
         con.add(buttonPanel);
         con.add(leftStickPanel);

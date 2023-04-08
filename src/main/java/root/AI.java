@@ -110,14 +110,6 @@ public class AI {
             }
         }
     }
-//    public void move()
-//    public void autoResolve() throws InterruptedException {
-//        move();
-//        Thread.sleep(10);
-//        while (!Objects.equals(s.ring_100.index, "C7")){
-//            autoResolve();
-//        }
-//    }
 
     public void autoResolve() throws InterruptedException {
         timer = new Timer(35, new ActionListener() {
